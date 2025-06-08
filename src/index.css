@@ -1,25 +1,62 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+/* MacPaw Fixel Display */
+@font-face {
+  font-family: "MacPaw Fixel Display";
+  src: url("/fonts/MacPawFixelDisplay-Regular.woff2") format("woff2");
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
 }
 
-a {
+@font-face {
+  font-family: "MacPaw Fixel Display";
+  src: url("/fonts/MacPawFixelDisplay-Medium.woff2") format("woff2");
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  font-style: normal;
 }
-a:hover {
-  color: #535bf2;
+
+@font-face {
+  font-family: "MacPaw Fixel Display";
+  src: url("/fonts/MacPawFixelDisplay-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MacPaw Fixel Display";
+  src: url("/fonts/MacPawFixelDisplay-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* SF Pro Display */
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFProDisplay-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFProDisplay-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  /* Breakpoints */
+  --mobile: 375px;
+  --tablet: 768px;
+  --desktop: 1440px;
+
+  /* Colors */
+  --black: #121417;
+  --green: #85aa9f;
+  --white: #fcfcfc;
+  --white-1: #f8f8f8;
+
+  /* Fonts */
+  --first-font-family: "MacPaw Fixel Display", sans-serif;
+  --second-font-family: "SF Pro Display", sans-serif;
 }
 
 body {
@@ -31,38 +68,6 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  font-family: "MacPaw Fixel Display", sans-serif;
+  font-weight: 400;
 }
