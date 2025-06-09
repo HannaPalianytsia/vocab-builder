@@ -1,0 +1,36 @@
+.formWrapper {
+  border-radius: 25px;
+  background: rgba(133, 170, 159, 0.1);
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 107%;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgba(18, 20, 23, 0.8);
+}
+
+.link {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: rgba(18, 20, 23, 0.5);
+  text-align: start;
+}

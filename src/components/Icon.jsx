@@ -1,15 +1,24 @@
-const Icon = ({ id, width, height, className = "", fillColor }) => {
+const Icon = ({
+  id,
+  width,
+  height,
+  className = "",
+  fillColor,
+  strokeColor,
+}) => {
   return (
     <svg
       className={`${className}`}
-      style={{ background: "transparent" }}
       width={width}
       height={height}
       aria-hidden="true"
     >
       <use
-        style={{ fill: `${fillColor}` }}
-        href={`/sprite.svg#icon-${id}`}
+        style={{
+          fill: fillColor,
+          stroke: strokeColor,
+        }}
+        href={`../../public/icons/sprite.svg#${id}`}
       ></use>
     </svg>
   );

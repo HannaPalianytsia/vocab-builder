@@ -1,0 +1,60 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.display {
+  display: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.nav {
+  display: none;
+}
+
+.link {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--black);
+  border-radius: 15px;
+  padding: 12px 20px;
+  transition: color o.3s ease, background-color 0.3s ease;
+}
+
+.active {
+  color: var(--white);
+  background: var(--green);
+}
+
+.menu-svg {
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .nav {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .burgerbtn {
+    display: none;
+  }
+
+  .display {
+    display: block;
+  }
+}
