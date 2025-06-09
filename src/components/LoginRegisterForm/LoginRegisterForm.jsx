@@ -1,19 +1,47 @@
-import css from "./LoginRegusterForm.module.css";
+import css from "./LoginRegisterForm.module.css";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signIn, signUp } from "../../redux/auth/operations";
+import Icon from "../Icon";
 
 const LoginRegisterForm = ({ operation }) => {
+  const isRegister = operation === "Register";
+
+  const [showPassword, setShowPassword] = useState(false);
+  const toggleVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const dispatch = useDispatch();
+
+  const schema = yup.object().shape({
+    name: isRegister
+      ? yup.string().required("Name is required")
+      : yup.string().notRequired(),
+    email: yup.string().email("Invalid email").required("Email is required"),
+    password: yup
+      .string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+  });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  const onSubmit = (data, operation) => {
-    if (operation === "Register") {
-      console.log("Register Form submitted:", data);
+  const onSubmit = (data) => {
+    if (isRegister) {
+      dispatch(signUp(data));
     } else {
-      console.log("Login Form submitted:", data);
+      dispatch(signIn(data));
     }
   };
 
@@ -31,51 +59,53 @@ const LoginRegisterForm = ({ operation }) => {
           Please enter your login details to continue using our service:
         </p>
       )}
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          maxWidth: 300,
-        }}
-      >
-        {operation === "Register" && (
+
+      <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+        {isRegister && (
           <div>
-            <label>Name</label>
-            <input
-              {...register("name", { required: "Name is required" })}
-              type="text"
-            />
+            <input {...register("name")} type="text" placeholder="Name" />
             {errors.name && (
               <p style={{ color: "red" }}>{errors.name.message}</p>
             )}
           </div>
         )}
+
         <div>
-          <label>Email</label>
-          <input
-            {...register("email", {
-              required: "Email is required",
-              pattern: { value: /^\S+@\S+$/i, message: "Invalid email" },
-            })}
-            type="email"
-          />
+          <input {...register("email")} type="email" placeholder="Email" />
           {errors.email && (
             <p style={{ color: "red" }}>{errors.email.message}</p>
           )}
         </div>
-        <div>
-          <label>Password</label>
+
+        <div className={css.inputButton}>
           <input
-            {...register("password", { required: "Password is required" })}
-            type="password"
+            {...register("password")}
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
           />
           {errors.password && (
             <p style={{ color: "red" }}>{errors.password.message}</p>
           )}
+          <button
+            type="button"
+            onClick={() => toggleVisibility("password")}
+            className={css.toggleVisibility}
+          >
+            {showPassword ? (
+              <Icon id="icon-eye" width={20} height={20} className={css.eye} />
+            ) : (
+              <Icon
+                id="icon-eye-off"
+                width={20}
+                height={20}
+                className={css.eye}
+              />
+            )}
+          </button>
         </div>
-        <button type="submit">{operation}</button>
+        <button type="submit" className={css.submit}>
+          {operation}
+        </button>
       </form>
       {operation === "Register" ? (
         <Link to="/login" className={css.link}>
