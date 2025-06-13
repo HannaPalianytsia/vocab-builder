@@ -43,16 +43,18 @@
 }
 
 :root {
-  /* Breakpoints */
-  --mobile: 375px;
-  --tablet: 768px;
-  --desktop: 1440px;
-
   /* Colors */
-  --black: #121417;
-  --green: #85aa9f;
-  --white: #fcfcfc;
-  --white-1: #f8f8f8;
+  --main-color: #85aa9f;
+  --main-color-a01: rgba(133, 170, 159, 0.1);
+  --main-color-a04: rgba(133, 170, 159, 0.4);
+  --text-color: #121417;
+  --text-color-a08: rgba(18, 20, 23, 0.8);
+  --text-color-a05: rgba(18, 20, 23, 0.5);
+  --background-color-1: #f8f8f8;
+  --background-color-2: #fcfcfc;
+  --background-color-3: #fff;
+  --modal-background: rgba(18, 20, 23, 0.2);
+  --border-color: rgba(18, 20, 23, 0.1);
 
   /* Fonts */
   --first-font-family: "MacPaw Fixel Display", sans-serif;
@@ -68,7 +70,7 @@ body {
 }
 
 h1 {
-  font-family: "MacPaw Fixel Display", sans-serif;
+  font-family: var(--first-font-family);
   font-weight: 400;
 }
 
@@ -116,9 +118,9 @@ img {
 
 body {
   margin: 0 auto;
-  font-family: var(--font-family);
-  color: var(--black);
-  background: var(--white-1);
+  font-family: var(--first-font-family);
+  color: var(--text-color);
+  background: var(--background-color-1);
 }
 
 html {
