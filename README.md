@@ -1,6 +1,6 @@
 #VocabBuilder – командний проєкт
 
-ТЗ: (відкрити тз)х[https://docs.google.com/spreadsheets/d/1Eu6Tj7LbSEsEk5CM2qfyZgLSgElH9fbCZvf-jVEHoMI/edit?usp=sharing]
+ТЗ: (відкрити тз)[https://docs.google.com/spreadsheets/d/1Eu6Tj7LbSEsEk5CM2qfyZgLSgElH9fbCZvf-jVEHoMI/edit?usp=sharing]
 
 
 Введи в терміналі:
