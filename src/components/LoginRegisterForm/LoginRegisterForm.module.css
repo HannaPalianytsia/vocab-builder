@@ -1,6 +1,6 @@
 .formWrapper {
   border-radius: 25px;
-  background: rgba(133, 170, 159, 0.1);
+  background: var(--main-color-a01);
   padding: 32px 16px;
   display: flex;
   flex-direction: column;
@@ -14,16 +14,16 @@
 
   input {
     width: 100%;
-    border: 1px solid rgba(18, 20, 23, 0.1);
+    border: 1px solid var(--border-color);
     border-radius: 15px;
     padding: 16px 18px;
     outline: none;
 
-    font-family: var(--font-family);
+    font-family: var(--first-font-family);
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
-    color: var(--black);
+    color: var(--text-color);
   }
 }
 
@@ -34,40 +34,40 @@
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  background: var(--green);
+  background: var(--main-color);
 
-  font-family: var(--font-family);
+  font-family: var(--first-font-family);
   font-weight: 700;
   font-size: 18px;
   line-height: 156%;
-  color: var(--white);
+  color: var(--background-color-2);
 }
 
 .title {
-  font-family: var(--font-family);
+  font-family: var(--first-font-family);
   font-weight: 600;
   font-size: 30px;
   line-height: 107%;
   letter-spacing: -0.02em;
-  color: var(--black);
+  color: var(--text-color);
 }
 
 .text {
-  font-family: var(--font-family);
+  font-family: var(--first-font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  color: rgba(18, 20, 23, 0.8);
+  color: var(--text-color-a08);
 }
 
 .link {
-  font-family: var(--font-family);
+  font-family: var(--first-font-family);
   font-weight: 700;
   font-size: 16px;
   line-height: 150%;
   text-decoration: underline;
   text-decoration-skip-ink: none;
-  color: rgba(18, 20, 23, 0.5);
+  color: var(--text-color-a05);
   text-align: center;
 }
 
@@ -83,6 +83,6 @@
 }
 
 .eye {
-  stroke: var(--black);
+  stroke: var(--text-color);
   fill: none;
 }

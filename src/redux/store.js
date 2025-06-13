@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/slice";
+import { wordsReducer } from "./word/slice";
 import {
   persistStore,
   persistReducer,
@@ -21,8 +22,7 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    // words: wordsReducer,
-    // user: userReducer,
+    words: wordsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
