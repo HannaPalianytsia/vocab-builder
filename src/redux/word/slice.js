@@ -7,6 +7,9 @@ import {
   fetchAllWords,
   fetchOwnWords,
   deleteWord,
+  wordsStatistics,
+  wordsTasks,
+  wordsAnswers,
 } from "./operations";
 import { signOut } from "../auth/operations";
 
@@ -25,7 +28,11 @@ const wordsSlice = createSlice({
   initialState: {
     items: [],
     totalCount: 0,
+    totalPages: null,
+    page: null,
     categories: [],
+    tasks: [],
+    answers: [],
     loading: false,
     error: null,
   },
@@ -64,6 +71,8 @@ const wordsSlice = createSlice({
       .addCase(fetchAllWords.pending, handlePending)
       .addCase(fetchAllWords.fulfilled, (state, { payload }) => {
         state.items = payload.results;
+        state.page = payload.page;
+        state.totalPages = payload.totalPages;
         state.loading = false;
       })
       .addCase(fetchAllWords.rejected, handleRejected)
@@ -71,6 +80,8 @@ const wordsSlice = createSlice({
       .addCase(fetchOwnWords.pending, handlePending)
       .addCase(fetchOwnWords.fulfilled, (state, { payload }) => {
         state.items = payload.results;
+        state.page = payload.page;
+        state.totalPages = payload.totalPages;
         state.loading = false;
       })
       .addCase(fetchOwnWords.rejected, handleRejected)
@@ -81,6 +92,27 @@ const wordsSlice = createSlice({
         state.loading = false;
       })
       .addCase(deleteWord.rejected, handleRejected)
+      //wordsStatistics
+      .addCase(wordsStatistics.pending, handlePending)
+      .addCase(wordsStatistics.fulfilled, (state, { payload }) => {
+        state.totalCount = payload.totalCount;
+        state.loading = false;
+      })
+      .addCase(wordsStatistics.rejected, handleRejected)
+      //wordsTasks
+      .addCase(wordsTasks.pending, handlePending)
+      .addCase(wordsTasks.fulfilled, (state, { payload }) => {
+        state.tasks = payload.tasks;
+        state.loading = false;
+      })
+      .addCase(wordsTasks.rejected, handleRejected)
+      //wordsAnswers
+      .addCase(wordsAnswers.pending, handlePending)
+      .addCase(wordsAnswers.fulfilled, (state, { payload }) => {
+        state.answers = payload;
+        state.loading = false;
+      })
+      .addCase(wordsAnswers.rejected, handleRejected)
       //signOut
       .addCase(signOut.fulfilled, (state) => {
         state.items = [];

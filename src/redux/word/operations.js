@@ -79,14 +79,38 @@ export const deleteWord = createAsyncThunk(
   }
 );
 
-/* export const  = createAsyncThunk(
-  "",
-  async (credentials, thunkAPI) => {
+export const wordsStatistics = createAsyncThunk(
+  "words/statistics",
+  async (_, thunkAPI) => {
     try {
-      const { data } = await axios.("", credentials);
+      const { data } = await axios.get("words/statistics");
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-); */
+);
+
+export const wordsTasks = createAsyncThunk(
+  "words/tasks",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get("words/tasks");
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const wordsAnswers = createAsyncThunk(
+  "words/answers",
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post("words/answers", credentials);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
