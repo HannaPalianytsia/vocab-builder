@@ -31,7 +31,8 @@ export const signOut = createAsyncThunk(
   "users/signout",
   async (_, thunkAPI) => {
     try {
-      await axios.post("users/signout");
+      const res = await axios.post("users/signout");
+      console.log(res);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
