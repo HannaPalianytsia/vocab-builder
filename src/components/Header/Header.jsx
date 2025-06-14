@@ -2,12 +2,22 @@ import { Link, NavLink } from "react-router-dom";
 import css from "./Header.module.css";
 import clsx from "clsx";
 import Icon from "../Icon";
+import { selectAuthName } from "../../redux/auth/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { signOut } from "../../redux/auth/operations";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
 const Header = () => {
+  const name = useSelector(selectAuthName);
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    dispatch(signOut());
+  };
+
   function openBurger() {
     // setShowBurgerMenu(true);
     console.log("Open burger menu");
@@ -43,6 +53,17 @@ const Header = () => {
         </NavLink>
       </nav>
 
+      <p>
+        {name}
+        <Icon
+          id={"icon-user"}
+          width={32}
+          height={32}
+          className={"user-svg"}
+          strokeColor={"#121417"}
+        />
+      </p>
+
       <button onClick={openBurger} className={css.burgerbtn}>
         <Icon
           id={"icon-menu"}
@@ -51,6 +72,10 @@ const Header = () => {
           className={"menu-svg"}
           strokeColor={"#121417"}
         />
+      </button>
+
+      <button type="button" onClick={handleLogOut}>
+        Log out
       </button>
     </header>
   );
