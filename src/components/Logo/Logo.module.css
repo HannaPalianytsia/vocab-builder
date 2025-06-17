@@ -1,0 +1,29 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 16px;
+  width: 100%;
+}
+.logoicon {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  border-radius: 50%;
+  background: var(--main-color);
+}
+
+.logotext {
+  font-family: var(--first-font-family);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.33333;
+  color: var(--text-color);
+}
+
+@media screen and (min-width: 768px) {
+  .logotext {
+    font-size: 22px;
+    line-height: 1.45455;
+  }
+}
