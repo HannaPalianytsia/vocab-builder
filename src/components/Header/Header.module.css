@@ -5,19 +5,9 @@
   width: 100%;
 }
 
-.display {
-  display: none;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  padding: 7px;
-  border-radius: 50%;
-  background: var(--main-color);
-}
-
-.nav {
+.display,
+.nav,
+.logoutBtn {
   display: none;
 }
 
@@ -36,7 +26,32 @@
   background: var(--main-color);
 }
 
-.menu-svg {
+.usermenu {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  font-family: var(--first-font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-right: 8px;
+}
+
+.usericon {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 50%;
+  background: var(--main-color);
+}
+
+.burgerbtn {
+  padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (min-width: 768px) {

@@ -1,11 +1,11 @@
 import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "modern-normalize";
 import SharedLayout from "./components/SharedLayout";
 import RestrictedRoute from "./components/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute";
-import Header from "./components/Header/Header";
+import MainLayout from "./pages/MainLayout/MainLayout";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
@@ -21,16 +21,12 @@ function App() {
   return (
     <>
       <SharedLayout>
-        <Header />
-
         <Routes>
-          <Route path="/" element={<HomePage />} />
-
           <Route
             path="/login"
             element={
               <RestrictedRoute
-                redirectTo="/dictionary"
+                redirectTo="/"
                 element={<LoginPage element={<LoginPage />} />}
               />
             }
@@ -39,36 +35,48 @@ function App() {
           <Route
             path="/register"
             element={
-              <RestrictedRoute
-                redirectTo="/dictionary"
-                element={<RegisterPage />}
-              />
+              <RestrictedRoute redirectTo="/" element={<RegisterPage />} />
             }
           />
 
           <Route
-            path="/dictionary"
+            path="/"
             element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<DictionaryPage />}
-              />
+              <PrivateRoute redirectTo="/login" component={<MainLayout />} />
             }
-          />
+          >
+            <Route index element={<Navigate to="/dictionary" />} />
+            <Route
+              path="/dictionary"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<DictionaryPage />}
+                />
+              }
+            />
 
-          <Route
-            path="/recommend"
-            element={
-              <PrivateRoute redirectTo="/login" component={<RecommendPage />} />
-            }
-          />
+            <Route
+              path="/recommend"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<RecommendPage />}
+                />
+              }
+            />
 
-          <Route
-            path="/training"
-            element={
-              <PrivateRoute redirectTo="/login" component={<TrainingPage />} />
-            }
-          />
+            <Route
+              path="/training"
+              element={
+                <PrivateRoute
+                  redirectTo="/login"
+                  component={<TrainingPage />}
+                />
+              }
+            />
+          </Route>
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </SharedLayout>

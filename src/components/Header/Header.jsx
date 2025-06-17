@@ -5,6 +5,7 @@ import Icon from "../Icon";
 import { selectAuthName } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../redux/auth/operations";
+import Logo from "../Logo/Logo";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
@@ -29,15 +30,7 @@ const Header = () => {
 
   return (
     <header className={css.header}>
-      <Link to="/" className={css.logo}>
-        <Icon
-          id={"icon-logo-2"}
-          width={36}
-          height={36}
-          fillColor={"#fcfcfc"}
-          className={"logo-svg"}
-        />
-      </Link>
+      <Logo />
 
       <nav className={css.nav}>
         <NavLink to="/dictionary" className={buildLinkClass}>
@@ -53,30 +46,32 @@ const Header = () => {
         </NavLink>
       </nav>
 
-      <p>
-        {name}
-        <Icon
-          id={"icon-user"}
-          width={32}
-          height={32}
-          className={"user-svg"}
-          strokeColor={"#121417"}
-        />
-      </p>
+      <div className={css.usermenu}>
+        <p className={css.username}>{name}</p>
+        <div className={css.usericon}>
+          <Icon
+            id={"icon-user"}
+            width={14}
+            height={14}
+            className={"user-svg"}
+            fillColor={"rgba(252, 252, 252, 0.7)"}
+          />
+        </div>
 
-      <button onClick={openBurger} className={css.burgerbtn}>
-        <Icon
-          id={"icon-menu"}
-          width={32}
-          height={32}
-          className={"menu-svg"}
-          strokeColor={"#121417"}
-        />
-      </button>
+        <button onClick={openBurger} className={css.burgerbtn}>
+          <Icon
+            id={"icon-menu"}
+            width={32}
+            height={22}
+            className={"menu-svg"}
+            strokeColor={"#121417"}
+          />
+        </button>
 
-      <button type="button" onClick={handleLogOut}>
-        Log out
-      </button>
+        <button type="button" onClick={handleLogOut} className={css.logoutBtn}>
+          Log out
+        </button>
+      </div>
     </header>
   );
 };
