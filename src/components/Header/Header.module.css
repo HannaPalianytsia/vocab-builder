@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 38px;
   width: 100%;
 }
 
@@ -29,6 +30,7 @@
 .usermenu {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .username {
@@ -37,7 +39,6 @@
   font-size: 16px;
   line-height: 1.5;
   color: var(--text-color);
-  margin-right: 8px;
 }
 
 .usericon {
