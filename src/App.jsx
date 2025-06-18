@@ -5,9 +5,8 @@ import "modern-normalize";
 import SharedLayout from "./components/SharedLayout";
 import RestrictedRoute from "./components/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute";
-import MainLayout from "./pages/MainLayout/MainLayout";
 
-const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const MainLayout = lazy(() => import("./pages/MainLayout/MainLayout"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const TrainingPage = lazy(() => import("./pages/TrainingPage/TrainingPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
