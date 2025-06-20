@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: left;
   gap: 16px;
-  width: 100%;
 }
 .logoicon {
   display: flex;

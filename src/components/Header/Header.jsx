@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import css from "./Header.module.css";
 import clsx from "clsx";
 import Icon from "../Icon";
@@ -6,6 +6,7 @@ import { selectAuthName } from "../../redux/auth/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../redux/auth/operations";
 import Logo from "../Logo/Logo";
+import Menu from "../Menu/Menu";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
@@ -72,6 +73,7 @@ const Header = () => {
           Log out
         </button>
       </div>
+      {/* <Menu name={name} buildLinkClass={buildLinkClass} /> */}
     </header>
   );
 };
