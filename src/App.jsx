@@ -3,10 +3,10 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "modern-normalize";
 import SharedLayout from "./components/SharedLayout";
+import MainLayout from "./components/MainLayout";
 import RestrictedRoute from "./components/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute";
 
-const MainLayout = lazy(() => import("./pages/MainLayout/MainLayout"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const TrainingPage = lazy(() => import("./pages/TrainingPage/TrainingPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
