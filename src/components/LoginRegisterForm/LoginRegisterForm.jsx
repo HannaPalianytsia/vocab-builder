@@ -17,6 +17,7 @@ const LoginRegisterForm = ({ operation }) => {
   };
 
   const dispatch = useDispatch();
+  const passwordRegex = /^(?:\d[A-Za-z]{6}|[A-Za-z]{6}\d)$/;
 
   const schema = yup.object().shape({
     name: isRegister
@@ -25,7 +26,10 @@ const LoginRegisterForm = ({ operation }) => {
     email: yup.string().email("Invalid email").required("Email is required"),
     password: yup
       .string()
-      .min(6, "Password must be at least 6 characters")
+      .matches(
+        passwordRegex,
+        "Password must consist of 6 letters and 1 number at begin or end"
+      )
       .required("Password is required"),
   });
 
@@ -71,7 +75,7 @@ const LoginRegisterForm = ({ operation }) => {
         )}
 
         <div>
-          <input {...register("email")} type="email" placeholder="Email" />
+          <input {...register("email")} type="text" placeholder="Email" />
           {errors.email && (
             <p style={{ color: "red" }}>{errors.email.message}</p>
           )}
