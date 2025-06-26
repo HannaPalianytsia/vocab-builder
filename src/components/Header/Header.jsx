@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { signOut } from "../../redux/auth/operations";
 import Logo from "../Logo/Logo";
 import Menu from "../Menu/Menu";
+import { useState } from "react";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
@@ -20,14 +21,15 @@ const Header = () => {
     dispatch(signOut());
   };
 
+  const [showBurgerMenu, setShowBurgerMenu] = useState(false);
+
   function openBurger() {
-    // setShowBurgerMenu(true);
-    console.log("Open burger menu");
+    setShowBurgerMenu(true);
   }
 
-  //   function closeBurger() {
-  //     setShowBurgerMenu(false);
-  //   }
+  function closeBurger() {
+    setShowBurgerMenu(false);
+  }
 
   return (
     <header className={css.header}>
@@ -73,7 +75,9 @@ const Header = () => {
           Log out
         </button>
       </div>
-      {/* <Menu name={name} buildLinkClass={buildLinkClass} /> */}
+      {showBurgerMenu && (
+        <Menu name={name} close={closeBurger} logOut={handleLogOut} />
+      )}
     </header>
   );
 };

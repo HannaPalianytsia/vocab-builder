@@ -8,7 +8,7 @@ const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 
-const Menu = ({ name }) => {
+const Menu = ({ name, close, logOut }) => {
   return (
     <div className={css.menu}>
       <div className={css.menuheader}>
@@ -24,7 +24,7 @@ const Menu = ({ name }) => {
             />
           </div>
         </div>
-        <button className={css.closebutton}>
+        <button onClick={close} className={css.closebutton}>
           <Icon
             id={"icon-close"}
             width={20}
@@ -36,19 +36,23 @@ const Menu = ({ name }) => {
       </div>
 
       <nav className={css.nav}>
-        <NavLink to="/dictionary" className={buildLinkClass}>
+        <NavLink onClick={close} to="/dictionary" className={buildLinkClass}>
           Dictionary
         </NavLink>
 
-        <NavLink to="/recommend" className={buildLinkClass}>
+        <NavLink onClick={close} to="/recommend" className={buildLinkClass}>
           Recommend
         </NavLink>
 
-        <NavLink to="/training" className={buildLinkClass}>
+        <NavLink onClick={close} to="/training" className={buildLinkClass}>
           Training
         </NavLink>
 
-        <button type="button" className={clsx(css.link, css.logoutBtn)}>
+        <button
+          onClick={logOut}
+          type="button"
+          className={clsx(css.link, css.logoutBtn)}
+        >
           Log out
         </button>
       </nav>
