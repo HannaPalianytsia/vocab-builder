@@ -16,51 +16,13 @@
   align-items: center;
 }
 
-.user {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.username {
-  font-weight: 500;
-  font-size: 16px;
-  color: var(--background-color-2);
-}
-
-.usericon {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  border-radius: 50%;
-  background: var(--background-color-2);
-}
-
 .closebutton {
   padding: 0;
 }
-
-.nav {
+.menuNav {
   display: flex;
   flex-direction: column;
   gap: 28px;
   margin-top: 166px;
   margin-bottom: 92px;
-  width: 110px;
-}
-
-.link {
-  font-family: var(--first-font-family);
-  font-weight: 500;
-  font-size: 14px;
-  border-radius: 15px;
-  transition: color o.3s ease, background-color 0.3s ease;
-  color: var(--background-color-2);
-  padding: 0;
-}
-
-.active {
-  color: var(--text-color);
-  background: var(--background-color-2);
-  padding: 12px 20px;
 }

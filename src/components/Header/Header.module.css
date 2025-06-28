@@ -6,48 +6,14 @@
   width: 100%;
 }
 
-.display,
-.nav,
 .logoutBtn {
   display: none;
-}
-
-.link {
-  font-family: var(--first-font-family);
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--text-color);
-  border-radius: 15px;
-  padding: 12px 0;
-  transition: color o.3s ease, background-color 0.3s ease;
-}
-
-.active {
-  color: var(--background-color-1);
-  background: var(--main-color);
-  padding: 12px 20px;
 }
 
 .usermenu {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.username {
-  font-family: var(--first-font-family);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  color: var(--text-color);
-}
-
-.usericon {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  border-radius: 50%;
-  background: var(--main-color);
 }
 
 .burgerbtn {
@@ -60,19 +26,8 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .nav {
-    display: flex;
-    gap: 28px;
-    align-items: center;
-    justify-content: center;
-  }
-
   .burgerbtn {
     display: none;
-  }
-
-  .display {
-    display: block;
   }
 
   .logoutBtn {
