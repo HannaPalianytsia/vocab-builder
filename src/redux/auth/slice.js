@@ -20,27 +20,27 @@ const authSlice = createSlice({
     loading: false,
     error: null,
     name: "",
+    email: "",
   },
   extraReducers: (builder) => {
     builder
-      //signUp
       .addCase(signUp.pending, handlePending)
       .addCase(signUp.fulfilled, (state, action) => {
-        state.token = action.payload.accessToken;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.loading = false;
         state.name = action.payload.name;
+        state.email = action.payload.email;
       })
       .addCase(signUp.rejected, handleRejected)
-      //signIn
       .addCase(signIn.pending, handlePending)
       .addCase(signIn.fulfilled, (state, action) => {
-        state.token = action.payload.accessToken;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.name = action.payload.name;
+        state.email = action.payload.email;
       })
       .addCase(signIn.rejected, handleRejected)
-      //signOut
       .addCase(signOut.pending, handlePending)
       .addCase(signOut.fulfilled, (state) => {
         state.loading = false;
@@ -48,17 +48,17 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
         state.name = "";
+        state.email = "";
       })
       .addCase(signOut.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || "Failed to log out";
       })
-      //currentUser
       .addCase(currentUser.pending, (state) => {
         state.isRefreshing = true;
       })
       .addCase(currentUser.fulfilled, (state, action) => {
-        state.token = action.payload.accessToken;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })

@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "modern-normalize";
@@ -6,6 +6,9 @@ import SharedLayout from "./components/SharedLayout";
 import MainLayout from "./components/MainLayout";
 import RestrictedRoute from "./components/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute";
+import { useDispatch } from "react-redux";
+import { currentUser } from "./redux/auth/operations";
+import Loader from "./components/Loader/Loader";
 
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const TrainingPage = lazy(() => import("./pages/TrainingPage/TrainingPage"));
@@ -17,6 +20,12 @@ const DictionaryPage = lazy(() =>
 const RecommendPage = lazy(() => import("./pages/RecommendPage/RecommendPage"));
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [dispatch]);
+
   return (
     <>
       <SharedLayout>
