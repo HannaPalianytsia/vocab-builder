@@ -6,6 +6,8 @@ export const wordsCategories = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get("words/categories");
+      console.log("wordsCategories", data);
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
