@@ -12,7 +12,6 @@ const DictionaryPage = () => {
 
   return (
     <div>
-      <h1>DictionaryPage</h1>
       <Dashboard />
     </div>
   );
