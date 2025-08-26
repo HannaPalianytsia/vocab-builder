@@ -1,26 +1,32 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectWordsCategories } from "../../redux/word/selectors";
+import { createWord } from "../../redux/word/operations";
 
 const AddWordForm = ({ onClose }) => {
   const categories = useSelector(selectWordsCategories);
 
   const [category, setCategory] = useState(categories[0] || "");
-  const [verbType, setVerbType] = useState("regular");
+  const [isIrregular, setVerbType] = useState(false);
   const [uaWord, setUaWord] = useState("");
   const [enWord, setEnWord] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newWord = {
       category,
-      type: category === "verb" ? verbType : null,
       ua: uaWord.trim(),
       en: enWord.trim(),
+      ...(category === "verb" && { isIrregular }),
     };
 
-    console.log("New word:", newWord);
+    console.log(newWord);
+
+    dispatch(createWord(newWord));
+
     onClose();
   };
 
@@ -47,8 +53,8 @@ const AddWordForm = ({ onClose }) => {
               type="radio"
               name="verbType"
               value="regular"
-              checked={verbType === "regular"}
-              onChange={(e) => setVerbType(e.target.value)}
+              checked={isIrregular}
+              onChange={() => setVerbType(true)}
             />
             Regular
           </label>
@@ -57,8 +63,8 @@ const AddWordForm = ({ onClose }) => {
               type="radio"
               name="verbType"
               value="irregular"
-              checked={verbType === "irregular"}
-              onChange={(e) => setVerbType(e.target.value)}
+              checked={!isIrregular}
+              onChange={() => setVerbType(false)}
             />
             Irregular
           </label>
